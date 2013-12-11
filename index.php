@@ -27,6 +27,11 @@
     </ul>
     <h3 class="text-muted">Control de Process Checks</h3>
   </div>
+  <div class="breadcrumbs">
+    <ol class="breadcrumb" data-bind="foreach:path">
+      <li><a href="#" data-bind="text:$root"></a></li>
+    </ol>
+  </div>
 <!-- Formulario de ProcessChecks con Knockout Bindings
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="row" id="machine-setup">
@@ -45,17 +50,6 @@
       </div>
       <a href="#/" class="btn btn-default" id="save-machine-data">Guardar</a>
     </form>
-  </div>
-
-<!-- Lista de Downtimes pasados
-++++++++++++++++++++++++++++++++++++++++++++ -->
-  <div class="row downtime">
-    <ul class="list-group col-lg-12">
-      <a href="#/show_more" class="list-group-item">
-        <h4 class="list-group-item-heading">#downtime</h4>
-        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-      </a>
-    </ul>
   </div>
 
 <!-- Footer
