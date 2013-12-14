@@ -12,7 +12,7 @@
   <title>Control de Process Checks</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <!-- <link href="jumbotron-narrow.css" rel="stylesheet"> -->
 </head>
 <body>
 <div class="container">
@@ -27,10 +27,12 @@
     </ul>
     <h3 class="text-muted">Control de Process Checks</h3>
   </div>
-  <div class="breadcrumbs">
-    <ol class="breadcrumb" data-bind="foreach:path">
-      <li><a href="#" data-bind="text:$root"></a></li>
-    </ol>
+  <div class="row">
+    <div class="breadcrumbs">
+      <ol class="breadcrumb" data-bind="foreach:path">
+        <li><a href="#" data-bind="text:$data"></a></li>
+      </ol>
+    </div>
   </div>
 <!-- Formulario de ProcessChecks con Knockout Bindings
 ++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -44,12 +46,15 @@
           </label>
         </div>
       </div>
+      <!-- 
+        Formulario inecesario
+
       <div class="form-group">
         <label for="bonder-name">Nombre</label>
         <input class="form-control" type="text" id="bonder-name" placeholder="Ingresa el nombre de la Maquina"></input>
       </div>
       <a href="#/" class="btn btn-default" id="save-machine-data">Guardar</a>
-    </form>
+    </form> -->
   </div>
 
 <!-- Footer

@@ -2,8 +2,9 @@ bonderFormViewModel = ()->
 	@machines = window.machines
 	@process = window.process
 	@processSelected = ko.observable()
-	@log = ()->
-		@.processSelected $('input[name=process]:checked').val()
-	@
+	@log = (currentModelValue) ->
+		console.log $('input[name=process]:checked').val()
+		#return console.log(currentModelValue);
+		this.path.push(currentModelValue.name);
 
 ko.applyBindings new bonderFormViewModel()

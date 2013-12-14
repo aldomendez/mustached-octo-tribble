@@ -1,15 +1,19 @@
-var bonderFormViewModel;
+var bvm;
 
-bonderFormViewModel =  {
-	path : ko.observableArray([])
-  machines : window.machines
-  process : window.process
-  processSelected : ko.observable()
-  this.log = function(currentModelValue) {
-    //return this.processSelected($('input[name=process]:checked').val());
-    //return console.log(currentModelValue);
-    this.path.push(currentModelValue.name);
+bvm =  function(){
+  var self = this;
+
+  self.path = ko.observableArray();
+  self.machines = window.machines;
+  self.process = window.process;
+  self.processSelected = ko.observable();
+
+  self.log = function(currentModelValue) {
+    console.log( $('input[name=process]:checked').val() );
+    return console.log(currentModelValue);
+    self.path.push('asdfsdf');
   }
+  
 };
-
-ko.applyBindings(new bonderFormViewModel());
+bva = new bvm();
+ko.applyBindings(bva);
