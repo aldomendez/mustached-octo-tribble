@@ -1,19 +1,51 @@
-var bvm;
+var Proceso, Views, app;
 
-bvm =  function(){
-  var self = this;
+app = app || {};
 
-  self.path = ko.observableArray();
-  self.machines = window.machines;
-  self.process = window.process;
-  self.processSelected = ko.observable();
-
-  self.log = function(currentModelValue) {
-    console.log( $('input[name=process]:checked').val() );
-    return console.log(currentModelValue);
-    self.path.push('asdfsdf');
+Proceso = (function() {
+  function Proceso() {
+    this.proceso = app.proc;
   }
-  
-};
-bva = new bvm();
-ko.applyBindings(bva);
+
+  Proceso.prototype.selectProcess = function(selectedProcess) {
+    this.selectedProcess = selectedProcess;
+  };
+
+  Proceso.prototype.renderProcessList = function() {};
+
+  return Proceso;
+
+})();
+
+Views = (function() {
+  function Views(id, target) {
+    this.id = id;
+    this.target = target;
+    this.target = $(this.target);
+    this.el = $(this.id);
+    this.content = this.el.text();
+    this.compileTemplete();
+  }
+
+  Views.prototype.render = function(data) {
+    this.template(data);
+    return this.target.html(this.template);
+  };
+
+  Views.prototype.compileTemplete = function() {
+    return this.template = doT.template(this.content);
+  };
+
+  return Views;
+
+})();
+
+/*
+// 1. Compile template function
+var tempFn = doT.template("<h1>Here is a sample template {{=it.foo}}</h1>");
+// 2. Use template function as many times as you like
+var resultText = tempFn({foo: 'with doT'});
+*/
+
+
+app.form = new Views('#form-template', '#form');

@@ -31,29 +31,30 @@
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="row" id="machine-setup">
     <div class="breadcrumbs">
-      <ol class="breadcrumb" data-bind="foreach:path">
-        <li><a href="#" data-bind="text:$data"></a></li>
+      <ol class="breadcrumb">
+        <li><a href="#" >Proceso</a></li>
+        <li><a href="#" >Cancelar</a></li>
       </ol>
     </div>
-    <form role="form">
-      <legend>Datos de Process Checks <small data-bind="text:processSelected"></small></legend>
-      <div class="machines-list" data-bind="foreach:process">
-        <div class="radio">
-          <label class="radio-inline">
-            <input type="radio" id="env-1" name="process" value="prod" data-bind="value:name,click:$root.log"><span data-bind="text: name"></span>
-          </label>
-        </div>
-      </div>
-      <!-- 
-        Formulario inecesario
-
-      <div class="form-group">
-        <label for="bonder-name">Nombre</label>
-        <input class="form-control" type="text" id="bonder-name" placeholder="Ingresa el nombre de la Maquina"></input>
-      </div>
-      <a href="#/" class="btn btn-default" id="save-machine-data">Guardar</a>
-    </form> -->
+    <form role="form" id="form">
+    </form>
   </div>
+
+<script id="form-template" type="doT-Template">
+<legend>Datos de Process Checks {{=it.name}}</legend>
+
+<div class="machines-list">{{~it.bonders:value:index}}
+  <div class="radio">
+    <label class="radio-inline">
+      <input type="radio" name="process" value="prod"><span>{{=value}}</span>
+    </label>
+  </div>{{~}}
+</div>
+
+{{~it.componentes:value:index}}
+<div>{{=value.name}}!<small>{{=value.lcl}}</small></div>
+{{~}}
+</script>
 
 <!-- Footer
 ++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -67,17 +68,12 @@
 <script type="text/javascript" src="js/underscore-1.5.2.min.js"></script>
 <script type="text/javascript" src="js/knockout-3.0.0.js"></script>
 <script type="text/javascript" src="js/processchecks.knockout.js"></script>
+<script type="text/javascript" src="js/doT.min.js"></script>
 <!-- <script type="text/javascript" src="js/sammy.js"></script> -->
 <!-- <script type="text/javascript" src="js/backbone-1.1.0min.js"></script> -->
 <!-- <script type="text/javascript" src="js/stopwatch.js"></script> -->
 <!-- <script type="text/javascript" src="js/moment.js"></script> -->
 <!-- <script type="text/javascript" src="js/xdate.js"></script> -->
 <script type="text/javascript" src="js/app.js"></script>
-<script>
-  $(function () {
-      // sammy.run('#/');
-      // window.app = new App('<?php echo $_SERVER['REMOTE_ADDR']; ?>');
-  });
-</script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 var StopWatch;
 
 StopWatch = (function() {
-
   function StopWatch(display, rate) {
     this.display = display;
     this.refreshRate = rate != null ? rate : 1000;

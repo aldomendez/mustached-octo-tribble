@@ -1,7 +1,5 @@
 <?php 
 
-require 'vendor/autoload.php';
-
 /**
 *  Bonder Down Times
 */
@@ -42,23 +40,3 @@ class Bonder
 	}
 
 }
-
-$app = new \Slim\Slim(array(
-	'debug'=>true
-));
-
-$app->get('/bonder', function()
-{
-	$bonder = new Bonder($_SERVER['REMOTE_ADDR']);
-	echo $bonder->get_bonder_data();
-});
-
-
-$app->post('/bonder', function()
-{
-	$bonder = new Bonder($_SERVER['REMOTE_ADDR'],'registering');
-	$bonder->save_bonder_data();
-	echo file_get_contents('php://input');
-});
-
-$app->run();
