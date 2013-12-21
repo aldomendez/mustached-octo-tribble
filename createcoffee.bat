@@ -2,10 +2,14 @@
 
 :: Primero ponemos un buen nombre a la ventana
 title Compilador de coffeeScript
-cd \\cymautocert\osaapp\aldo\js
+cd C:\apps
+:: Creamos una unidad temporal
+pushd \\cymautocert\osaapp\diamnd\
 pause > null
 :: Iniciamos el trabajo
-\\cymautocert\osaapp\aldo\js\coffee -c ./class.coffee -o ./output
+c:\apps\coffee -c ./class.coffee
 
+:: Desmontamos la unidad virtual
+popd
 :: Esperamos para ver si hay algun error en la ventana
 pause > null

@@ -27,16 +27,14 @@
     </ul>
     <h3 class="text-muted">Control de Process Checks</h3>
   </div>
-  <div class="row">
+<!-- Formulario de ProcessChecks con Knockout Bindings
+++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="row" id="machine-setup">
     <div class="breadcrumbs">
       <ol class="breadcrumb" data-bind="foreach:path">
         <li><a href="#" data-bind="text:$data"></a></li>
       </ol>
     </div>
-  </div>
-<!-- Formulario de ProcessChecks con Knockout Bindings
-++++++++++++++++++++++++++++++++++++++++++++ -->
-  <div class="row" id="machine-setup">
     <form role="form">
       <legend>Datos de Process Checks <small data-bind="text:processSelected"></small></legend>
       <div class="machines-list" data-bind="foreach:process">
