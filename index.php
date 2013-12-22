@@ -19,7 +19,7 @@
 <!-- header
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="header">
-    <ul class="nav nav-pills pull-right hidden-xs">
+    <ul class="nav nav-pills pull-right">
       <li class="active"><a href="#/">ProcessChecks</a></li>
       <!-- <li><a href="#/celda">Resultados</a></li> -->
       <!-- <li><a href="#/todas">Todas</a></li> -->
@@ -32,22 +32,21 @@
   <div class="row" id="machine-setup">
     <div class="breadcrumbs" id="brdcmps">
     </div>
-    <form role="form" id="form">
+    <form role="form" id="form" method="post" action="formHandler.php">
     </form>
   </div>
 
-<!-- Template: Lista de procesos seleccionable
+<!-- Template: Lista para seleccionar procesos
 ++++++++++++++++++++++++++++++++++++++++++++ -->
 <script id="brdcmps-template" type="doT-Template">
-  <ol class="breadcrumb">
+  <div class="btn-group btn-group-justified">
     {{~it:proceso:index}}
-    {{? proceso.componentes}}<li><a href="#/capture/{{=index}}" >{{=proceso.name}}</a></li>{{?}}
+    {{? proceso.componentes}}<a class="btn btn-default" href="#/capture/{{=index}}" >{{=proceso.name}}</a>{{?}}
     {{~}}
-  </ol>
+  </div>
 </script>
 
-</li>
-<p></p>
+
 <!-- Template: Formulario 
 ++++++++++++++++++++++++++++++++++++++++++++ -->
 <script id="form-template" type="doT-Template">
@@ -55,50 +54,33 @@
   <div class="panel-heading">
     <h3 class="panel-title"><small>Process Checks</small> {{=it.name}}</h3>
   </div>
-    <div class="panel-body">
-    <p>Selecciona la maquina en la que realizaste el Shear Test</p>
-    </div><!-- /Panel body -->    
-    <ul class="list-group">
-      {{? it.componentes }}
-      <li class="list-group-item">
-        <div class="machines-list">{{~it.bonders:value:index}}
-          <div class="radio">
-            <label class="radio-inline">
-              <input type="radio" name="process" value="{{=value}}"><span>{{=value}}</span>
-            </label>
-          </div>{{~}}
-        </div>
-      </li>
-
-      <li class="list-group-item">
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">Maquina</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="machine" placeholder="">
-          </div>
-        </div>
-      </li>
-
-      {{~it.componentes:value:index}}
-      <li class="list-group-item">
-        <div class="form-group">
-          <label for="inputEmail3" class="col-sm-2 control-label">{{=value.name}}</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="{{=value.name}}" placeholder="Valor mas bajo: {{=value.lcl}}">
-          </div>
-        </div>
-      </li>
-      {{~}}
-
-      <li class="list-group-item">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
-      </li>
-      {{??}}
-      <div class="alert alert-info"><p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
+  <ul class="list-group">
+    {{? it.componentes }}
+    <li class="list-group-item">
+      <div class="machines-list">{{~it.bonders:value:index}}
+        <label class="checkbox-inline">
+          <input type="radio" value="{{=value}}" name="machine">{{=value}}
+        </label>{{~}}
       </div>
-      {{?}}
+    </li>
+    <input type="hidden" name="proceso" value="{{=it.name}}">
+    {{~it.componentes:value:index}}
+    <li class="list-group-item">
+      <label for="inputEmail3" class="col-sm-2 control-label">{{=value.name}}</label>
+      <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor mas bajo: {{=value.lcl}}">
+    </li>
+    {{~}}
 
-    </ul>
+    <li class="list-group-item">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+    </li>
+    {{??}}
+    <div class="alert alert-info">
+      <p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
+    </div>
+    {{?}}
+
+  </ul>
 </div><!-- /Panel -->
 
 
