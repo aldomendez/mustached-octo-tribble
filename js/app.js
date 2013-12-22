@@ -18,18 +18,17 @@ Proceso = (function() {
 })();
 
 Views = (function() {
-  function Views(id, target) {
-    this.id = id;
+  function Views(templateSource, target) {
+    this.templateSource = templateSource;
     this.target = target;
     this.target = $(this.target);
-    this.el = $(this.id);
+    this.el = $(this.templateSource);
     this.content = this.el.text();
     this.compileTemplete();
   }
 
   Views.prototype.render = function(data) {
-    this.template(data);
-    return this.target.html(this.template);
+    return this.target.html(this.template(data));
   };
 
   Views.prototype.compileTemplete = function() {
@@ -40,12 +39,18 @@ Views = (function() {
 
 })();
 
-/*
-// 1. Compile template function
-var tempFn = doT.template("<h1>Here is a sample template {{=it.foo}}</h1>");
-// 2. Use template function as many times as you like
-var resultText = tempFn({foo: 'with doT'});
-*/
-
+app.brdcmps = new Views('#brdcmps-template', '#brdcmps');
 
 app.form = new Views('#form-template', '#form');
+
+app.brdcmps.render(app.process);
+
+app.sammy = Sammy('#machine-setup', function() {
+  this.get('#/capture/:id', function() {
+    console.log(this.params.id);
+    return app.form.render(app.process[this.params.id]);
+  });
+  this.get('#/', function() {});
+});
+
+app.sammy.run('#/');

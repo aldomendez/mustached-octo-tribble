@@ -3,28 +3,31 @@ app = app || {}
 class Proceso
 	constructor:->
 		@proceso = app.proc
-
 	selectProcess:(@selectedProcess)->
-
 	renderProcessList:()->
 
 class Views
-	constructor:(@id,@target)->
+	constructor:(@templateSource,@target)->
 		@target = $ @target
-		@el = $ @id 
+		@el = $ @templateSource 
 		@content = @el.text()
 		@compileTemplete()
 	render:(data)->
-		@template data
-		@target.html(@template);
+		@target.html(@template data);
 	compileTemplete:()->
 		@template = doT.template @content
 
-###
-// 1. Compile template function
-var tempFn = doT.template("<h1>Here is a sample template {{=it.foo}}</h1>");
-// 2. Use template function as many times as you like
-var resultText = tempFn({foo: 'with doT'});
-###
+app.brdcmps = new Views('#brdcmps-template','#brdcmps')
+app.form = new Views('#form-template','#form')
+app.brdcmps.render app.process
 
-app.form = new Views('#form-template','#form');
+app.sammy = Sammy '#machine-setup',->
+	@get '#/capture/:id',()->
+		console.log @params.id
+		app.form.render app.process[@params.id]
+
+	@get '#/',->
+
+	return
+
+app.sammy.run '#/'

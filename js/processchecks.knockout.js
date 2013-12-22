@@ -1,10 +1,10 @@
-var proc;
+var app;
 
-proc = proc || {};
+app = app || {};
 
-proc.machines = ['CYBOND22', 'CYBOT42', 'CYBOND17', 'CYBOND16'];
+app.machines = ['CYBOND22', 'CYBOT42', 'CYBOND17', 'CYBOND16'];
 
-proc.process = [
+app.process = [
   {
     name: "PMQPSK",
     bonders: ['CYBOND22', 'CYBOT42', 'CYBOND17', 'CYBOND16'],

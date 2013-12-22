@@ -1,13 +1,13 @@
-proc = proc or {}
+app = app or {}
 # Describe los datos que se usaran para el formulario de Process Checks
 
 # Enumera los equipos que existen en la linea:
 #   Util para que se genere un formulario en el que de a elegir los equipos en
 #   los que se procesa un codigo determinado
-proc.machines = ['CYBOND22','CYBOT42','CYBOND17','CYBOND16']
+app.machines = ['CYBOND22','CYBOT42','CYBOND17','CYBOND16']
 
 # Procesos:
-proc.process=[{
+app.process=[{
 	name:"PMQPSK"
 	bonders:['CYBOND22','CYBOT42','CYBOND17','CYBOND16']
 	componentes:[{
