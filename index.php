@@ -46,41 +46,64 @@
   </ol>
 </script>
 
+</li>
+<p></p>
 <!-- Template: Formulario 
 ++++++++++++++++++++++++++++++++++++++++++++ -->
 <script id="form-template" type="doT-Template">
-<h2><small>Process Checks</small> {{=it.name}}</h2>
-{{? it.componentes }}
-<div class="machines-list">{{~it.bonders:value:index}}
-  <div class="radio">
-    <label class="radio-inline">
-      <input type="radio" name="process" value="{{=value}}"><span>{{=value}}</span>
-    </label>
-  </div>{{~}}
-</div>
-
-<div class="form-group">
-  <label for="inputEmail3" class="col-sm-2 control-label">Maquina</label>
-  <div class="col-sm-10">
-    <input type="email" class="form-control" id="machine" placeholder="">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><small>Process Checks</small> {{=it.name}}</h3>
   </div>
-</div>
-{{~it.componentes:value:index}}
+    <div class="panel-body">
+    <p>Selecciona la maquina en la que realizaste el Shear Test</p>
+    </div><!-- /Panel body -->    
+    <ul class="list-group">
+      {{? it.componentes }}
+      <li class="list-group-item">
+        <div class="machines-list">{{~it.bonders:value:index}}
+          <div class="radio">
+            <label class="radio-inline">
+              <input type="radio" name="process" value="{{=value}}"><span>{{=value}}</span>
+            </label>
+          </div>{{~}}
+        </div>
+      </li>
 
-<div class="form-group">
-  <label for="inputEmail3" class="col-sm-2 control-label">{{=value.name}}</label>
-  <div class="col-sm-10">
-    <input type="email" class="form-control" id="{{=value.name}}" placeholder="Valor mas bajo: {{=value.lcl}}">
-  </div>
-</div>
+      <li class="list-group-item">
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Maquina</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="machine" placeholder="">
+          </div>
+        </div>
+      </li>
 
-{{~}}
-<button type="submit" class="btn btn-default">Guardar</button>
-{{??}}
-<div class="alert alert-info"><p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
-</div>
-{{?}}
+      {{~it.componentes:value:index}}
+      <li class="list-group-item">
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">{{=value.name}}</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="{{=value.name}}" placeholder="Valor mas bajo: {{=value.lcl}}">
+          </div>
+        </div>
+      </li>
+      {{~}}
+
+      <li class="list-group-item">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+      </li>
+      {{??}}
+      <div class="alert alert-info"><p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
+      </div>
+      {{?}}
+
+    </ul>
+</div><!-- /Panel -->
+
+
 </script>
+
 <!-- Footer
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="footer">
