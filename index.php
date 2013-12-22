@@ -53,6 +53,8 @@
 </div>
 </script>
 
+<div class="panel-body"></div>
+
 <!-- Template: Formulario 
 ++++++++++++++++++++++++++++++++++++++++++++ -->
 <script id="form-template" type="doT-Template">
@@ -77,8 +79,10 @@
 
     {{~it.componentes:value:index}}
     <li class="list-group-item">
-      <label for="inputEmail3" class="col-sm-2 control-label">{{=value.name}}</label>
-      <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">{{=value.name}}</span>
+        <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
+      </div>
     </li>
     {{~}}
 
@@ -96,6 +100,10 @@
 
 
 </script>
+
+
+  
+
 
 <!-- Footer
 ++++++++++++++++++++++++++++++++++++++++++++ -->
