@@ -49,43 +49,43 @@ app.process = [
     bonders: ['CYBOND22'],
     componentes: [
       {
-        name: 'TIA_1',
+        name: 'TIA1',
         lcl: '1800'
       }, {
-        name: 'TIA_2',
+        name: 'TIA2',
         lcl: '1800'
       }, {
-        name: 'TIA_3',
+        name: 'TIA3',
         lcl: '1800'
       }, {
-        name: 'TIA_4',
+        name: 'TIA4',
         lcl: '1800'
       }, {
-        name: 'Capacitor_1',
+        name: 'Capacitor1',
         lcl: '200'
       }, {
-        name: 'Capacitor_2',
+        name: 'Capacitor2',
         lcl: '200'
       }, {
-        name: 'Capacitor_3',
+        name: 'Capacitor3',
         lcl: '200'
       }, {
-        name: 'Capacitor_4',
+        name: 'Capacitor4',
         lcl: '200'
       }, {
-        name: 'Capacitor_5',
+        name: 'Capacitor5',
         lcl: '200'
       }, {
-        name: 'Capacitor_6',
+        name: 'Capacitor6',
         lcl: '200'
       }, {
-        name: 'Capacitor_7',
+        name: 'Capacitor7',
         lcl: '200'
       }, {
-        name: 'Capacitor_8',
+        name: 'Capacitor8',
         lcl: '200'
       }, {
-        name: 'Capacitor_SMT',
+        name: 'CapacitorSMT',
         lcl: '150'
       }
     ]
@@ -94,34 +94,34 @@ app.process = [
     bonders: ['CYBOND22'],
     componentes: [
       {
-        name: 'TIA_1',
+        name: 'TIA 1',
         lcl: '1800'
       }, {
-        name: 'TIA_2',
+        name: 'TIA 2',
         lcl: '1800'
       }, {
-        name: 'TIA_3',
+        name: 'TIA 3',
         lcl: '1800'
       }, {
-        name: 'TIA_4',
+        name: 'TIA 4',
         lcl: '1800'
       }, {
-        name: 'TIA_5',
+        name: 'TIA 5',
         lcl: '1800'
       }, {
-        name: 'Capacitor_1',
+        name: 'Capacitor 1',
         lcl: '200'
       }, {
-        name: 'Capacitor_2',
+        name: 'Capacitor 2',
         lcl: '200'
       }, {
-        name: 'Capacitor_3',
+        name: 'Capacitor 3',
         lcl: '200'
       }, {
-        name: 'Capacitor_4',
+        name: 'Capacitor 4',
         lcl: '200'
       }, {
-        name: 'Capacitor_5',
+        name: 'Capacitor 5',
         lcl: '200'
       }
     ]

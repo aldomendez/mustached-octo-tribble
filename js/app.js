@@ -1,21 +1,6 @@
-var Proceso, Views, app;
+var Views, app;
 
 app = app || {};
-
-Proceso = (function() {
-  function Proceso() {
-    this.proceso = app.proc;
-  }
-
-  Proceso.prototype.selectProcess = function(selectedProcess) {
-    this.selectedProcess = selectedProcess;
-  };
-
-  Proceso.prototype.renderProcessList = function() {};
-
-  return Proceso;
-
-})();
 
 Views = (function() {
   function Views(templateSource, target) {
@@ -48,9 +33,23 @@ app.brdcmps.render(app.process);
 app.sammy = Sammy('#machine-setup', function() {
   this.get('#/capture/:id', function() {
     console.log(this.params.id);
-    return app.form.render(app.process[this.params.id]);
+    app.form.render(app.process[this.params.id]);
+    $('#process-help').slideUp();
+    return $('#form').slideDown();
   });
-  this.get('#/', function() {});
+  this.get('#/', function() {
+    $('#form').slideUp();
+    return $('#process-help').slideDown();
+  });
 });
 
 app.sammy.run('#/');
+
+$(document).ready(function() {
+  return $('#form').on('submit', function(e) {
+    var machine;
+    e.preventDefault();
+    machine = $('input[name=machine]:checked', '#form').val();
+    return alert(machine);
+  });
+});

@@ -39,13 +39,19 @@
 <!-- Template: Lista para seleccionar procesos
 ++++++++++++++++++++++++++++++++++++++++++++ -->
 <script id="brdcmps-template" type="doT-Template">
-  <div class="btn-group btn-group-justified">
-    {{~it:proceso:index}}
-    {{? proceso.componentes}}<a class="btn btn-default" href="#/capture/{{=index}}" >{{=proceso.name}}</a>{{?}}
-    {{~}}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="btn-group btn-group-justified">
+      {{~it:proceso:index}}
+      {{? proceso.componentes}}<a class="btn btn-default" href="#/capture/{{=index}}" >{{=proceso.name}}</a>{{?}}
+      {{~}}
+    </div>
   </div>
+  <div class="panel-body" id="process-help">
+    <p>Selecciona el proceso de la lista de arriba</p>
+  </div>
+</div>
 </script>
-
 
 <!-- Template: Formulario 
 ++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -55,7 +61,7 @@
     <h3 class="panel-title"><small>Process Checks</small> {{=it.name}}</h3>
   </div>
   <ul class="list-group">
-    {{? it.componentes }}
+    {{? it.componentes }} <!-- Si tiene componentes configurados: -->
     <li class="list-group-item">
       <div class="machines-list">{{~it.bonders:value:index}}
         <label class="checkbox-inline">
@@ -64,17 +70,22 @@
       </div>
     </li>
     <input type="hidden" name="proceso" value="{{=it.name}}">
+    <li class="list-group-item">
+      <label for="inputEmail3" class="col-sm-2 control-label">Numero de serie</label>
+      <input type="text" class="form-control" name="serie" placeholder="Numero de serie para rastreabilidad">
+    </li>
+
     {{~it.componentes:value:index}}
     <li class="list-group-item">
       <label for="inputEmail3" class="col-sm-2 control-label">{{=value.name}}</label>
-      <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor mas bajo: {{=value.lcl}}">
+      <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
     </li>
     {{~}}
 
     <li class="list-group-item">
       <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
     </li>
-    {{??}}
+    {{??}} <!-- Si no tiene componentes configurados: -->
     <div class="alert alert-info">
       <p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
     </div>

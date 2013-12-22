@@ -1,11 +1,5 @@
 app = app || {}
 
-class Proceso
-	constructor:->
-		@proceso = app.proc
-	selectProcess:(@selectedProcess)->
-	renderProcessList:()->
-
 class Views
 	constructor:(@templateSource,@target)->
 		@target = $ @target
@@ -25,9 +19,19 @@ app.sammy = Sammy '#machine-setup',->
 	@get '#/capture/:id',()->
 		console.log @params.id
 		app.form.render app.process[@params.id]
+		$('#process-help').slideUp()
+		$('#form').slideDown()
 
 	@get '#/',->
+		$('#form').slideUp()
+		$('#process-help').slideDown()
 
 	return
 
 app.sammy.run '#/'
+
+$(document).ready ->
+	$('#form').on 'submit',(e)->
+		e.preventDefault()
+		machine = $('input[name=machine]:checked', '#form').val()
+		alert machine
