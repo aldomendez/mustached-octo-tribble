@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="panel-body" id="process-help">
-    <p>Selecciona el proceso de la lista de arriba</p>
+    <div class="alert alert-info">Selecciona el proceso de la lista de arriba</div>
   </div>
 </div>
 </script>
