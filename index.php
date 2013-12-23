@@ -67,24 +67,24 @@
     <li class="list-group-item">
       <div class="machines-list">{{~it.bonders:value:index}}
         <label class="checkbox-inline">
-          <input type="radio" value="{{=value}}" name="machine">{{=value}}
+          <input type="radio" value="{{=value}}" name="system_id">{{=value}}
         </label>{{~}}
       </div>
     </li>
-    <input type="hidden" name="proceso" value="{{=it.name}}">
+    <input type="hidden" name="process" value="{{=it.name}}">
 
     <li class="list-group-item">
     <div class="row">
       <div class="col-sm-6">
         <div class="input-group input-group-sm">
           <span class="input-group-addon">Numero de serie</span>
-          <input type="text" class="form-control" name="serie" placeholder="Numero de serie para rastreabilidad">
+          <input type="text" class="form-control" name="serial_num" placeholder="Numero de serie para rastreabilidad">
         </div>
       </div>
       <div class="col-sm-6"> 
         <div class="input-group input-group-sm">
           <span class="input-group-addon">Usuario</span>
-          <input type="text" class="form-control" name="usuario" placeholder="Numero de Usuario">
+          <input type="text" class="form-control" name="user" placeholder="Numero de Usuario">
         </div>
       </div>
     </div>
@@ -101,7 +101,7 @@
 
     <li class="list-group-item">
       <label for="inputEmail3" class="col-sm-2 control-label">Comentarios</label>
-      <input type="text" class="form-control" name="comentario" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
+      <input type="text" class="form-control" name="comment" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
     </li>
 
     <li class="list-group-item">
