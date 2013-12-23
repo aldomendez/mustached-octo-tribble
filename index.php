@@ -20,7 +20,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="header">
     <ul class="nav nav-pills pull-right">
-      <li class="active"><a href="#/">ProcessChecks</a></li>
+      <li class="active"><a href="#/">Reset Page (dev only)</a></li>
       <!-- <li><a href="#/celda">Resultados</a></li> -->
       <!-- <li><a href="#/todas">Todas</a></li> -->
       <!-- <li><a href="#/comentarios">Comentarios</a></li> -->
@@ -74,17 +74,20 @@
     <input type="hidden" name="proceso" value="{{=it.name}}">
 
     <li class="list-group-item">
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">Numero de serie</span>
-        <input type="text" class="form-control" name="serie" placeholder="Numero de serie para rastreabilidad">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">Numero de serie</span>
+          <input type="text" class="form-control" name="serie" placeholder="Numero de serie para rastreabilidad">
+        </div>
       </div>
-    </li>
-
-    <li class="list-group-item">
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">Usuario</span>
-        <input type="text" class="form-control" name="usuario" placeholder="Numero de Usuario">
+      <div class="col-sm-6"> 
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">Usuario</span>
+          <input type="text" class="form-control" name="usuario" placeholder="Numero de Usuario">
+        </div>
       </div>
+    </div>
     </li>
 
     {{~it.componentes:value:index}}
