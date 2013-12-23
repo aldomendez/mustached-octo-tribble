@@ -7,7 +7,7 @@ app.machines = ['CYBOND22', 'CYBOT42', 'CYBOND17', 'CYBOND16'];
 app.process = [
   {
     name: "PMQPSK",
-    bonders: ['CYBOND22', 'CYBOT42', 'CYBOND17', 'CYBOND16'],
+    bonders: ['CYBOND22', 'CYBOND17', 'CYBOND16'],
     componentes: [
       {
         name: 'Diodo_1',
@@ -46,7 +46,7 @@ app.process = [
     bonders: ['CYBOT42']
   }, {
     name: "DiamondROSA-HIC",
-    bonders: ['CYBOND22'],
+    bonders: ['CYBOND42'],
     componentes: [
       {
         name: 'TIA_1',
@@ -91,7 +91,7 @@ app.process = [
     ]
   }, {
     name: "SuperNovaROSA-HIC",
-    bonders: ['CYBOND22'],
+    bonders: ['CYBOND42'],
     componentes: [
       {
         name: 'TIA_1',

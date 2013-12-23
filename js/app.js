@@ -46,10 +46,5 @@ app.sammy = Sammy('#machine-setup', function() {
 app.sammy.run('#/');
 
 $(document).ready(function() {
-  return $('#form').on('submit', function(e) {
-    var machine;
-    e.preventDefault();
-    machine = $('input[name=machine]:checked', '#form').val();
-    return alert(machine);
-  });
+  return $('#form').on('submit', function(e) {});
 });

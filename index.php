@@ -72,9 +72,19 @@
       </div>
     </li>
     <input type="hidden" name="proceso" value="{{=it.name}}">
+
     <li class="list-group-item">
-      <label for="inputEmail3" class="col-sm-2 control-label">Numero de serie</label>
-      <input type="text" class="form-control" name="serie" placeholder="Numero de serie para rastreabilidad">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Numero de serie</span>
+        <input type="text" class="form-control" name="serie" placeholder="Numero de serie para rastreabilidad">
+      </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="input-group input-group-sm">
+        <span class="input-group-addon">Usuario</span>
+        <input type="text" class="form-control" name="usuario" placeholder="Numero de Usuario">
+      </div>
     </li>
 
     {{~it.componentes:value:index}}
@@ -85,6 +95,11 @@
       </div>
     </li>
     {{~}}
+
+    <li class="list-group-item">
+      <label for="inputEmail3" class="col-sm-2 control-label">Comentarios</label>
+      <input type="text" class="form-control" name="comentario" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
+    </li>
 
     <li class="list-group-item">
       <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>

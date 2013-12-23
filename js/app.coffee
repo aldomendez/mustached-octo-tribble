@@ -32,6 +32,6 @@ app.sammy.run '#/'
 
 $(document).ready ->
 	$('#form').on 'submit',(e)->
-		e.preventDefault()
-		machine = $('input[name=machine]:checked', '#form').val()
-		alert machine
+		# e.preventDefault()
+		# machine = $('input[name=machine]:checked', '#form').val()
+		# alert machine
