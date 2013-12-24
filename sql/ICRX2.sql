@@ -1,6 +1,6 @@
 -- Describe el contenido de la tabla que contiene los datos
 -- del proceso PMQPSK
-CREATE Table Shear_PMKPSK (
+CREATE Table Shear_ICRX2 (
 	-- "Datos estandard" (todas las tablas los llevan)
 	id 				number(6) NOT NULL,
 	process 		varchar(30),
@@ -13,8 +13,6 @@ CREATE Table Shear_PMKPSK (
 	-------------------------------------------------
 	-- Datos de los shear test
 	diodo_1			number(7,2),
-	diodo_2			number(7,2),
-	diodo_3			number(7,2),
-	diodo_4			number(7,2)
+	diodo_2			number(7,2)
 )
 

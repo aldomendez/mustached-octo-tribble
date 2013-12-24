@@ -43,7 +43,7 @@ app.process=[{
 	name:"DiamondTOSA-HIC"
 	bonders:['CYBOT42']
 },{
-	name:"DiamondROSA-HIC"
+	name:"DiamondROSA_HIC"
 	bonders:['CYBOND42']
 	componentes:[{
 		name:'TIA_1'
@@ -86,7 +86,7 @@ app.process=[{
 		lcl:'150'
 	}]
 },{
-	name:"SuperNovaROSA-HIC"
+	name:"SuperNovaROSA_HIC"
 	bonders:['CYBOND42']
 	componentes:[{
 		name:'TIA_1'

@@ -45,7 +45,7 @@ app.process = [
     name: "DiamondTOSA-HIC",
     bonders: ['CYBOT42']
   }, {
-    name: "DiamondROSA-HIC",
+    name: "DiamondROSA_HIC",
     bonders: ['CYBOND42'],
     componentes: [
       {
@@ -90,7 +90,7 @@ app.process = [
       }
     ]
   }, {
-    name: "SuperNovaROSA-HIC",
+    name: "SuperNovaROSA_HIC",
     bonders: ['CYBOND42'],
     componentes: [
       {
