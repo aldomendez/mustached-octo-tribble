@@ -32,7 +32,7 @@
   <div class="row" id="machine-setup">
     <div class="breadcrumbs" id="brdcmps">
     </div>
-    <form role="form" id="form" method="post" action="formHandler.php">
+    <form role="form" id="form" method="post" action="formHandler.php" name="formElement">
     </form>
   </div>
 
@@ -52,8 +52,6 @@
     </div>
   </div>
 </div>
-
-<div class="panel-body"></div>
 
 <div id="form-template" class="hidden">
 <!-- Template: Formulario 
@@ -95,7 +93,7 @@
       <li class="list-group-item">
         <div class="input-group input-group-sm">
           <span class="input-group-addon">{{=value.name}}</span>
-          <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
+          <input type="text" class="form-control" name="{{=value.name}}" id="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
         </div>
       </li>
       {{~}}
@@ -104,10 +102,15 @@
         <label for="inputEmail3" class="col-sm-2 control-label">Comentarios</label>
         <input type="text" class="form-control" name="comment" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
       </li>
+      
+      <li class="list-group-item hidden" id="alert-box">
+        <p class="alert alert-warning"></p>
+      </li>
 
       <li class="list-group-item">
         <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
       </li>
+
       {{??}} <!-- Si no tiene componentes configurados: -->
       <div class="alert alert-info">
         <p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
@@ -137,6 +140,7 @@
 <script type="text/javascript" src="js/knockout-3.0.0.js"></script>
 <script type="text/javascript" src="js/processchecks.knockout.js"></script>
 <script type="text/javascript" src="js/doT.min.js"></script>
+<script type="text/javascript" src="js/validate.min.js"></script>
 <script type="text/javascript" src="js/sammy.js"></script>
 <!-- <script type="text/javascript" src="js/backbone-1.1.0min.js"></script> -->
 <!-- <script type="text/javascript" src="js/stopwatch.js"></script> -->

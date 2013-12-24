@@ -11,11 +11,32 @@ class Views
 	compileTemplete:()->
 		@template = doT.template @content
 
+class Validator
+	constructor:(@target)->
+		@generateValidator()
+		@regenerate()
+	generateValidator:(data)->
+		@standardValidator = [{
+			name:'system_id'
+			display:'Maquina'
+			rules:'required'
+		},{
+			name:'serial_num'
+			display:'Numero de serie'
+			rules:'required|numeric'
+		}]
+	regenerate:(data)->
+		@validator = new FormValidator @target,@standardValidator,(err,evnt)->
+			evnt.preventDefault()
+			console.log err
+
+
 app.brdcmps = new Views('#brdcmps-template','#brdcmps')
 app.form = new Views('#form-template','#form')
 app.brdcmps.render app.process
+app.validator = new Validator('formElement')
 
-app.sammy = Sammy '#machine-setup',->
+app.sammy = Sammy '#brdcmps',->
 	@get '#/capture/:id',()->
 		console.log @params.id
 		app.form.render app.process[@params.id]
@@ -33,5 +54,5 @@ app.sammy.run '#/'
 $(document).ready ->
 	$('#form').on 'submit',(e)->
 		e.preventDefault()
-		machine = $('input[name=machine]:checked', '#form').val()
-		alert machine
+		system_id = $('input[name=system_id]:checked', '#form').length
+		if system_id then

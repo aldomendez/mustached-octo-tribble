@@ -1,4 +1,4 @@
-var Views, app;
+var Validator, Views, app;
 
 app = app || {};
 
@@ -24,13 +24,47 @@ Views = (function() {
 
 })();
 
+Validator = (function() {
+  function Validator(target) {
+    this.target = target;
+    this.generateValidator();
+    this.regenerate();
+  }
+
+  Validator.prototype.generateValidator = function(data) {
+    return this.standardValidator = [
+      {
+        name: 'system_id',
+        display: 'Maquina',
+        rules: 'required'
+      }, {
+        name: 'serial_num',
+        display: 'Numero de serie',
+        rules: 'required|numeric'
+      }
+    ];
+  };
+
+  Validator.prototype.regenerate = function(data) {
+    return this.validator = new FormValidator(this.target, this.standardValidator, function(err, evnt) {
+      evnt.preventDefault();
+      return console.log(err);
+    });
+  };
+
+  return Validator;
+
+})();
+
 app.brdcmps = new Views('#brdcmps-template', '#brdcmps');
 
 app.form = new Views('#form-template', '#form');
 
 app.brdcmps.render(app.process);
 
-app.sammy = Sammy('#machine-setup', function() {
+app.validator = new Validator('formElement');
+
+app.sammy = Sammy('#brdcmps', function() {
   this.get('#/capture/:id', function() {
     console.log(this.params.id);
     app.form.render(app.process[this.params.id]);
@@ -47,9 +81,11 @@ app.sammy.run('#/');
 
 $(document).ready(function() {
   return $('#form').on('submit', function(e) {
-    var machine;
+    var system_id;
     e.preventDefault();
-    machine = $('input[name=machine]:checked', '#form').val();
-    return alert(machine);
+    system_id = $('input[name=system_id]:checked', '#form').length;
+    if (system_id) {
+
+    }
   });
 });
