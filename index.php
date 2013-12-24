@@ -84,7 +84,7 @@
       <div class="col-sm-6"> 
         <div class="input-group input-group-sm">
           <span class="input-group-addon">Usuario</span>
-          <input type="text" class="form-control" name="user" placeholder="Numero de Usuario">
+          <input type="text" class="form-control" name="user_id" placeholder="Numero de Usuario">
         </div>
       </div>
     </div>
