@@ -36,88 +36,89 @@
     </form>
   </div>
 
+<div id="brdcmps-template" class="hidden">
 <!-- Template: Lista para seleccionar procesos
 ++++++++++++++++++++++++++++++++++++++++++++ -->
-<script id="brdcmps-template" type="doT-Template">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <div class="btn-group btn-group-justified">
-      {{~it:proceso:index}}
-      {{? proceso.componentes}}<a class="btn btn-default" href="#/capture/{{=index}}" >{{=proceso.name}}</a>{{?}}
-      {{~}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="btn-group btn-group-justified">
+        {{~it:proceso:index}}
+        {{? proceso.componentes}}<a class="btn btn-default" href="#/capture/{{=index}}" >{{=proceso.name}}</a>{{?}}
+        {{~}}
+      </div>
+    </div>
+    <div class="panel-body" id="process-help">
+      <div class="alert alert-info">Selecciona el proceso de la lista de arriba</div>
     </div>
   </div>
-  <div class="panel-body" id="process-help">
-    <div class="alert alert-info">Selecciona el proceso de la lista de arriba</div>
-  </div>
 </div>
-</script>
 
 <div class="panel-body"></div>
 
+<div id="form-template" class="hidden">
 <!-- Template: Formulario 
 ++++++++++++++++++++++++++++++++++++++++++++ -->
-<script id="form-template" type="doT-Template">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><small>Process Checks</small> {{=it.name}}</h3>
-  </div>
-  <ul class="list-group">
-    {{? it.componentes }} <!-- Si tiene componentes configurados: -->
-    <li class="list-group-item">
-      <div class="machines-list">{{~it.bonders:value:index}}
-        <label class="checkbox-inline">
-          <input type="radio" value="{{=value}}" name="system_id">{{=value}}
-        </label>{{~}}
-      </div>
-    </li>
-    <input type="hidden" name="process" value="{{=it.name}}">
 
-    <li class="list-group-item">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="input-group input-group-sm">
-          <span class="input-group-addon">Numero de serie</span>
-          <input type="text" class="form-control" name="serial_num" placeholder="Numero de serie para rastreabilidad">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><small>Process Checks</small> {{=it.name}}</h3>
+    </div>
+    <ul class="list-group">
+      {{? it.componentes }} <!-- Si tiene componentes configurados: -->
+      <li class="list-group-item">
+        <div class="machines-list">{{~it.bonders:value:index}}
+          <label class="checkbox-inline">
+            <input type="radio" value="{{=value}}" name="system_id">{{=value}}
+          </label>{{~}}
+        </div>
+      </li>
+      <input type="hidden" name="process" value="{{=it.name}}">
+
+      <li class="list-group-item">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon">Numero de serie</span>
+            <input type="text" class="form-control" name="serial_num" placeholder="Numero de serie para rastreabilidad">
+          </div>
+        </div>
+        <div class="col-sm-6"> 
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon">Usuario</span>
+            <input type="text" class="form-control" name="user_id" placeholder="Numero de Usuario">
+          </div>
         </div>
       </div>
-      <div class="col-sm-6"> 
+      </li>
+
+      {{~it.componentes:value:index}}
+      <li class="list-group-item">
         <div class="input-group input-group-sm">
-          <span class="input-group-addon">Usuario</span>
-          <input type="text" class="form-control" name="user_id" placeholder="Numero de Usuario">
+          <span class="input-group-addon">{{=value.name}}</span>
+          <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
         </div>
+      </li>
+      {{~}}
+
+      <li class="list-group-item">
+        <label for="inputEmail3" class="col-sm-2 control-label">Comentarios</label>
+        <input type="text" class="form-control" name="comment" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
+      </li>
+
+      <li class="list-group-item">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+      </li>
+      {{??}} <!-- Si no tiene componentes configurados: -->
+      <div class="alert alert-info">
+        <p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
       </div>
-    </div>
-    </li>
+      {{?}}
 
-    {{~it.componentes:value:index}}
-    <li class="list-group-item">
-      <div class="input-group input-group-sm">
-        <span class="input-group-addon">{{=value.name}}</span>
-        <input type="text" class="form-control" name="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
-      </div>
-    </li>
-    {{~}}
-
-    <li class="list-group-item">
-      <label for="inputEmail3" class="col-sm-2 control-label">Comentarios</label>
-      <input type="text" class="form-control" name="comment" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
-    </li>
-
-    <li class="list-group-item">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
-    </li>
-    {{??}} <!-- Si no tiene componentes configurados: -->
-    <div class="alert alert-info">
-      <p><span class="glyphicon glyphicon-info-sign"></span> Este elemento no esta correctamente configurado</p>
-    </div>
-    {{?}}
-
-  </ul>
-</div><!-- /Panel -->
+    </ul>
+  </div><!-- /Panel -->
 
 
-</script>
+</div>
 
 
   

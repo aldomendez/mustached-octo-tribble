@@ -4,7 +4,7 @@ class Views
 	constructor:(@templateSource,@target)->
 		@target = $ @target
 		@el = $ @templateSource 
-		@content = @el.text()
+		@content = @el.html()
 		@compileTemplete()
 	render:(data)->
 		@target.html(@template data);
@@ -32,6 +32,6 @@ app.sammy.run '#/'
 
 $(document).ready ->
 	$('#form').on 'submit',(e)->
-		# e.preventDefault()
-		# machine = $('input[name=machine]:checked', '#form').val()
-		# alert machine
+		e.preventDefault()
+		machine = $('input[name=machine]:checked', '#form').val()
+		alert machine

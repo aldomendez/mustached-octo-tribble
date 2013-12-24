@@ -8,7 +8,7 @@ Views = (function() {
     this.target = target;
     this.target = $(this.target);
     this.el = $(this.templateSource);
-    this.content = this.el.text();
+    this.content = this.el.html();
     this.compileTemplete();
   }
 
@@ -46,5 +46,10 @@ app.sammy = Sammy('#machine-setup', function() {
 app.sammy.run('#/');
 
 $(document).ready(function() {
-  return $('#form').on('submit', function(e) {});
+  return $('#form').on('submit', function(e) {
+    var machine;
+    e.preventDefault();
+    machine = $('input[name=machine]:checked', '#form').val();
+    return alert(machine);
+  });
 });
