@@ -101,7 +101,7 @@
 
       <li class="list-group-item">
         <label for="inputEmail3" class="col-sm-2 control-label">Comentarios</label>
-        <input type="text" class="form-control" name="comment" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
+        <input type="text" class="form-control" name="comments" placeholder="Proporciona comentarios de acuerdo a lo observado en las pruebas">
       </li>
       
       <li class="list-group-item hidden" id="alert-box">
