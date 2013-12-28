@@ -45,6 +45,10 @@ Validator = (function() {
         name: 'user_id',
         display: 'Numero de usuario',
         rules: 'required|numeric'
+      }, {
+        name: 'comment',
+        display: 'Comentario',
+        rules: 'max_length[500]'
       }
     ];
   };
