@@ -34,9 +34,24 @@ class DataBase
 		$this->setQuery($query);
 		$this->exec();
 	}
+	public function insert($query='')
+	{
+		$this->setQuery($query);
+		$this->only_exec();
+	}
 	public function bind($needle='',$haystack='')
 	{
 		oci_bind_by_name($this->statement, $needle, $haystack, -1);
+	}
+	public function only_exec()
+	{
+		try {
+			oci_execute($this->statement);
+		} catch (Exception $e) {
+			$this->fieldName = "Error";
+			$this->numOfFields = -1;
+			$this->results = array('error' => "Hay algo malo con tu query:\n\n " . $this->query . "\n\nEL error que reporta el sistema es:\n\n" . $e->getMessage());
+		} 
 	}
 	public function exec()
 	{
@@ -50,7 +65,7 @@ class DataBase
 			$this->rows = oci_fetch_all($this->statement, $this->results, 0, -1, OCI_FETCHSTATEMENT_BY_ROW);
 		} catch (Exception $e) {
 			$this->fieldName = "Error";
-			$this->numOfFields = 1;
+			$this->numOfFields = -1;
 			$this->results = array('error' => "Hay algo malo con tu query:\n\n " . $this->query . "\n\nEL error que reporta el sistema es:\n\n" . $e->getMessage());
 		} 
 	}
