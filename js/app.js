@@ -41,14 +41,27 @@ Validator = (function() {
         name: 'serial_num',
         display: 'Numero de serie',
         rules: 'required|numeric'
+      }, {
+        name: 'user_id',
+        display: 'Numero de usuario',
+        rules: 'required|numeric'
       }
     ];
   };
 
   Validator.prototype.regenerate = function(data) {
-    return this.validator = new FormValidator(this.target, this.standardValidator, function(err, evnt) {
-      evnt.preventDefault();
-      return console.log(err);
+    this.validator = new FormValidator(this.target, this.standardValidator, function(err, evnt) {
+      if (err.length !== 0) {
+        evnt.preventDefault();
+        console.log(err);
+        return _.map(err, function(err) {
+          return $.pnotify({
+            title: 'Error en el formulario',
+            text: err.message,
+            type: 'info'
+          });
+        });
+      }
     });
   };
 
@@ -78,14 +91,3 @@ app.sammy = Sammy('#brdcmps', function() {
 });
 
 app.sammy.run('#/');
-
-$(document).ready(function() {
-  return $('#form').on('submit', function(e) {
-    var system_id;
-    e.preventDefault();
-    system_id = $('input[name=system_id]:checked', '#form').length;
-    if (system_id) {
-
-    }
-  });
-});

@@ -4,7 +4,7 @@
 :: pushd "%~dp0"
 :: %~dp0 expands to the current (d)rive/(p)ath/(0)batchfilename
 ::-------------------------------
-
+cls
 
 
 :: Primero ponemos un buen nombre a la ventana

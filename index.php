@@ -12,6 +12,7 @@
   <title>Control de Process Checks</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/jquery.pnotify.default.css">
     <!-- <link href="jumbotron-narrow.css" rel="stylesheet"> -->
 </head>
 <body>
@@ -142,6 +143,7 @@
 <script type="text/javascript" src="js/doT.min.js"></script>
 <script type="text/javascript" src="js/validate.min.js"></script>
 <script type="text/javascript" src="js/sammy.js"></script>
+<script type="text/javascript" src="js/jquery.pnotify.min.js"></script>
 <!-- <script type="text/javascript" src="js/backbone-1.1.0min.js"></script> -->
 <!-- <script type="text/javascript" src="js/stopwatch.js"></script> -->
 <!-- <script type="text/javascript" src="js/moment.js"></script> -->

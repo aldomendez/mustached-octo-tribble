@@ -24,11 +24,23 @@ class Validator
 			name:'serial_num'
 			display:'Numero de serie'
 			rules:'required|numeric'
+		},{
+			name:'user_id'
+			display:'Numero de usuario'
+			rules:'required|numeric'
 		}]
 	regenerate:(data)->
 		@validator = new FormValidator @target,@standardValidator,(err,evnt)->
-			evnt.preventDefault()
-			console.log err
+			if err.length isnt 0
+				evnt.preventDefault()
+				console.log err
+				_.map err,(err)->
+					$.pnotify {
+						title:'Error en el formulario'
+						text: err.message
+						type:'info'
+					}
+		return
 
 
 app.brdcmps = new Views('#brdcmps-template','#brdcmps')
@@ -50,9 +62,3 @@ app.sammy = Sammy '#brdcmps',->
 	return
 
 app.sammy.run '#/'
-
-$(document).ready ->
-	$('#form').on 'submit',(e)->
-		e.preventDefault()
-		system_id = $('input[name=system_id]:checked', '#form').length
-		if system_id then
