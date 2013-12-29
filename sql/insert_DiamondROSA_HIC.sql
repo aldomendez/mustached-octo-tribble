@@ -1,0 +1,51 @@
+INSERT INTO DiamondROSA_HIC
+(
+	-- "Datos estandard" (todas las tablas los llevan)
+	id,
+	process,
+	shear_date,
+	serial_num,
+	system_id,
+	user_id,
+	comments,
+	passfail,
+	-------------------------------------------------
+	-- Datos de los shear test
+	TIA_1,
+	TIA_2,
+	TIA_3,
+	TIA_4,
+	Capacitor_1,
+	Capacitor_2,
+	Capacitor_3,
+	Capacitor_4,
+	Capacitor_5,
+	Capacitor_6,
+	Capacitor_7,
+	Capacitor_8,
+	Capacitor_SMT
+)
+VALUES
+(
+	:id,
+	:process,
+	sysdate,
+	:serial_num,
+	:system_id,
+	:user_id,
+	:comments,
+	:passfail,
+	:TIA_1,
+	:TIA_2,
+	:TIA_3,
+	:TIA_4,
+	:Capacitor_1,
+	:Capacitor_2,
+	:Capacitor_3,
+	:Capacitor_4,
+	:Capacitor_5,
+	:Capacitor_6,
+	:Capacitor_7,
+	:Capacitor_8,
+	:Capacitor_SMT
+)
