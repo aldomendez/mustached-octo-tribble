@@ -21,7 +21,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="header">
     <ul class="nav nav-pills pull-right">
-      <li class="active"><a href="#/">Reset Page (dev only)</a></li>
+      <!-- <li class="active"><a href="#/">Reset Page (dev only)</a></li> -->
       <!-- <li><a href="#/celda">Resultados</a></li> -->
       <!-- <li><a href="#/todas">Todas</a></li> -->
       <!-- <li><a href="#/comentarios">Comentarios</a></li> -->
@@ -109,7 +109,7 @@
       </li>
 
       <li class="list-group-item">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-cloud-upload"></span> Guardar</button>
       </li>
 
       {{??}} <!-- Si no tiene componentes configurados: -->

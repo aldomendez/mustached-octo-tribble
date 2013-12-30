@@ -63,6 +63,21 @@ app.sammy = Sammy '#brdcmps',->
 		$('#form').slideUp()
 		$('#process-help').slideDown()
 
+	@get '#/error/:message',->
+		$.pnotify {
+			title:'Error en el formulario'
+			text: @params['message']
+			type:'info'
+		}
+
+	@get '#/success/:process/:id',->
+		$.pnotify {
+			title:'Proceso: ' + @params['process']
+			text: 'Se genero el id: ' + @params['id']
+			type:'success'
+		}
+		@redirect '#/view/' +@params['id']
+
 	return
 
 app.sammy.run '#/'

@@ -7,13 +7,30 @@ ini_set('display_errors', '1');
 error_reporting(E_ALL ^ E_NOTICE);
 
 $db = new MxApps();
-echo "<pre>";
-print_r($_POST);
+// echo "<pre>";
+// print_r($_SERVER);
 
 if (isset($_POST['process']) && $_POST['process'] !== ''){
 	if (function_exists($_POST['process'])) {
 		$_POST['process']();
 	}
+}
+
+function redirect()
+{
+	global $db;
+	/* Redirect browser */
+
+	if ($db->state) {
+		$db->query('select max(id) id from ' . $tabla[$_POST['process']]);
+		$message = "success/" . $_POST['process'] . "/" . $db->results[0]['ID'];
+	} else {
+		$message = "error/" . urlencode($db->oci_error_message['message']);
+	}
+
+	header("Location: " . $_SERVER['HTTP_REFERER'] . "#/" . $message);
+	/* Make sure that code below does not get executed when we redirect. */
+	exit;
 }
 
 function bind($file, $value)
@@ -61,6 +78,7 @@ function ICRX2()
 	// Despues de sustituir todas las variables,
 	// insertamos en la base de datos
 	$db->insert($file);
+	redirect();
 }
 
 function SuperNovaROSA_HIC()
@@ -93,6 +111,7 @@ function SuperNovaROSA_HIC()
 	// Despues de sustituir todas las variables,
 	// insertamos en la base de datos
 	$db->insert($file);
+	redirect();
 }
 
 function PMQPSK()
@@ -118,6 +137,7 @@ function PMQPSK()
 	// Despues de sustituir todas las variables,
 	// insertamos en la base de datos
 	$db->insert($file);
+	redirect();
 }
 
 function DiamondROSA_HIC()
@@ -152,4 +172,5 @@ function DiamondROSA_HIC()
 	// Despues de sustituir todas las variables,
 	// insertamos en la base de datos
 	$db->insert($file);
+	redirect();
 }

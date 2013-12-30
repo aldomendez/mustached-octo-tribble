@@ -11,6 +11,7 @@ class DataBase
 	function __construct($db_name)
 	{
 		$this->name = $db_name;
+		$this->oci_error_message = '';
 	}
 
 	public function name()
@@ -45,13 +46,13 @@ class DataBase
 	}
 	public function only_exec()
 	{
-		try {
-			oci_execute($this->statement);
-		} catch (Exception $e) {
-			$this->fieldName = "Error";
-			$this->numOfFields = -1;
-			$this->results = array('error' => "Hay algo malo con tu query:\n\n " . $this->query . "\n\nEL error que reporta el sistema es:\n\n" . $e->getMessage());
-		} 
+		if( oci_execute($this->statement) )
+		{
+			$this->state = TRUE;
+		} else {
+			$this->state = FALSE;
+			$this->oci_error_message = oci_error($this->statement);
+		}
 	}
 	public function exec()
 	{
@@ -60,13 +61,12 @@ class DataBase
 		// binds antes de lacer la ejecucion, y que tome un array
 		// de binds de una variables del objeto.
 		// -------------------------------------------------------
-		try {
-			oci_execute($this->statement);
+		if (oci_execute($this->statement)){
+			$this->state = TRUE;
 			$this->rows = oci_fetch_all($this->statement, $this->results, 0, -1, OCI_FETCHSTATEMENT_BY_ROW);
-		} catch (Exception $e) {
-			$this->fieldName = "Error";
-			$this->numOfFields = -1;
-			$this->results = array('error' => "Hay algo malo con tu query:\n\n " . $this->query . "\n\nEL error que reporta el sistema es:\n\n" . $e->getMessage());
+		} else {
+			$this->state = FALSE;
+			$this->oci_error_message = oci_error($this->statement);
 		} 
 	}
 	public function numOfFields()

@@ -92,6 +92,21 @@ app.sammy = Sammy('#brdcmps', function() {
     $('#form').slideUp();
     return $('#process-help').slideDown();
   });
+  this.get('#/error/:message', function() {
+    return $.pnotify({
+      title: 'Error en el formulario',
+      text: this.params['message'],
+      type: 'info'
+    });
+  });
+  this.get('#/success/:process/:id', function() {
+    $.pnotify({
+      title: 'Proceso: ' + this.params['process'],
+      text: 'Se genero el id: ' + this.params['id'],
+      type: 'success'
+    });
+    return this.redirect('#/view/' + this.params['id']);
+  });
 });
 
 app.sammy.run('#/');
