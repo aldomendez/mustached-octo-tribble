@@ -11,16 +11,16 @@ app.process = [
     componentes: [
       {
         name: 'Diodo_1',
-        lcl: '100'
+        lcl: '200'
       }, {
         name: 'Diodo_2',
-        lcl: '100'
+        lcl: '200'
       }, {
         name: 'Diodo_3',
-        lcl: '100'
+        lcl: '200'
       }, {
         name: 'Diodo_4',
-        lcl: '100'
+        lcl: '200'
       }
     ]
   }, {
@@ -29,10 +29,10 @@ app.process = [
     componentes: [
       {
         name: 'Diodo_1',
-        lcl: '230'
+        lcl: '280'
       }, {
         name: 'Diodo_2',
-        lcl: '230'
+        lcl: '280'
       }
     ]
   }, {
@@ -62,31 +62,31 @@ app.process = [
         lcl: '1800'
       }, {
         name: 'Capacitor_1',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_2',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_3',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_4',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_5',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_6',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_7',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_8',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_SMT',
-        lcl: '150'
+        lcl: '180'
       }
     ]
   }, {
@@ -110,19 +110,19 @@ app.process = [
         lcl: '1800'
       }, {
         name: 'Capacitor_1',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_2',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_3',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_4',
-        lcl: '200'
+        lcl: '300'
       }, {
         name: 'Capacitor_5',
-        lcl: '200'
+        lcl: '300'
       }
     ]
   }
