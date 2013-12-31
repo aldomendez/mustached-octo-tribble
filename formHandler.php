@@ -3,7 +3,7 @@
 include "inc/database.php";
 ini_set('display_errors','off');
 ini_set('date.timezone', 'America/Mexico_City');
-ini_set('display_errors', '1');
+ini_set('display_errors', '0');
 error_reporting(E_ALL ^ E_NOTICE);
 
 $db = new MxApps();

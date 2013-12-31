@@ -105,7 +105,16 @@ app.sammy = Sammy('#brdcmps', function() {
       text: 'Se genero el id: ' + this.params['id'],
       type: 'success'
     });
-    return this.redirect('#/view/' + this.params['id']);
+    return this.redirect('#/view/' + this.params['process'] + '/' + this.params['id']);
+  });
+  this.get('#/view/:process/:id', function() {
+    app.requested = {
+      id: this.params['id'],
+      process: this.params['process']
+    };
+    return $.getJSON('getData.php', app.requested, function(data) {
+      return app.viewData = data;
+    });
   });
 });
 

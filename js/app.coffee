@@ -76,7 +76,17 @@ app.sammy = Sammy '#brdcmps',->
 			text: 'Se genero el id: ' + @params['id']
 			type:'success'
 		}
-		@redirect '#/view/' +@params['id']
+		@redirect '#/view/' + @params['process'] + '/' + @params['id']
+
+	@get '#/view/:process/:id',->
+		app.requested = {
+			id:@params['id']
+			process:@params['process']
+		}
+		$.getJSON 'getData.php', app.requested, (data)->
+			app.viewData = data
+			#console.log  _.find app.process, (num)->
+			#	num.name == app.requested.process
 
 	return
 
