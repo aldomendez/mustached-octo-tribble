@@ -1,6 +1,9 @@
 @echo off
 
-::_------------------------------
+::-------------------------------
+:: en vez de:
+:: pushd \\cymautocert\osaapp\dmndev\
+:: usare
 :: pushd "%~dp0"
 :: %~dp0 expands to the current (d)rive/(p)ath/(0)batchfilename
 ::-------------------------------
@@ -11,7 +14,7 @@ cls
 title Compilador de coffeeScript
 cd C:\apps
 :: Creamos una unidad temporal
-pushd \\cymautocert\osaapp\diamnd\
+pushd "%~dp0"
 ::pause > null
 :: Iniciamos el trabajo
 c:\apps\coffee -cb ./js/

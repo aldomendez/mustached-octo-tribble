@@ -19,16 +19,16 @@ INSERT INTO shear_pmkpsk
 )
 VALUES
 (
-	:id,
-	:process,
+	:ID,
+	:PROCESS,
 	sysdate,
-	:serial_num,
-	:system_id,
-	:user_id,
-	:comments,
-	:passfail,
-	:Diodo_1,
-	:Diodo_2,
-	:Diodo_3,
-	:Diodo_4
+	:SERIAL_NUM,
+	:SYSTEM_ID,
+	:USER_ID,
+	:COMMENTS,
+	:PASSFAIL,
+	:DIODO_1,
+	:DIODO_2,
+	:DIODO_3,
+	:DIODO_4
 )

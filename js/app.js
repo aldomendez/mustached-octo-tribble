@@ -1,4 +1,4 @@
-var Validator, Views, app;
+var Query, Validator, Views, app;
 
 app = app || {};
 
@@ -73,6 +73,16 @@ Validator = (function() {
 
 })();
 
+Query = (function() {
+  function Query() {
+    app.queryContent = new Views('#query-template', '#brdcmps');
+    app.queryContent.render(app.process);
+  }
+
+  return Query;
+
+})();
+
 app.brdcmps = new Views('#brdcmps-template', '#brdcmps');
 
 app.form = new Views('#form-template', '#form');
@@ -108,6 +118,19 @@ app.sammy = Sammy('#brdcmps', function() {
     return this.redirect('#/view/' + this.params['process'] + '/' + this.params['id']);
   });
   this.get('#/view/:process/:id', function() {
+    app.requested = {
+      id: this.params['id'],
+      process: this.params['process']
+    };
+    return $.getJSON('getData.php', app.requested, function(data) {
+      return app.viewData = data;
+    });
+  });
+  this.get('#/query', function() {
+    return app.que = new Query();
+  });
+  this.get('#/query/:process', function() {
+    app.que = new Query();
     app.requested = {
       id: this.params['id'],
       process: this.params['process']

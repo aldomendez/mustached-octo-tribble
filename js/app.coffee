@@ -46,6 +46,13 @@ class Validator
 					}
 		return
 
+class Query
+	constructor: ->
+		app.queryContent = new Views('#query-template','#brdcmps')
+		app.queryContent.render app.process
+		
+	
+
 
 app.brdcmps = new Views('#brdcmps-template','#brdcmps')
 app.form = new Views('#form-template','#form')
@@ -87,6 +94,23 @@ app.sammy = Sammy '#brdcmps',->
 			app.viewData = data
 			#console.log  _.find app.process, (num)->
 			#	num.name == app.requested.process
+
+	@get '#/query', ->
+		app.que = new Query()
+
+
+	@get '#/query/:process',->
+		app.que = new Query()
+		app.requested = {
+			id:@params['id']
+			process:@params['process']
+		}
+		$.getJSON 'getData.php', app.requested, (data)->
+			app.viewData = data
+			#console.log  _.find app.process, (num)->
+			#	num.name == app.requested.process
+
+
 
 	return
 

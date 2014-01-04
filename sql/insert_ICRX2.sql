@@ -16,14 +16,14 @@ INSERT INTO shear_icrx2
 )
 VALUES
 (
-	:id,
-	:process,
+	:ID,
+	:PROCESS,
 	sysdate,
-	:serial_num,
-	:system_id,
-	:user_id,
-	:comments,
-	:passfail,
-	:Diodo_1,
-	:Diodo_2
+	:SERIAL_NUM,
+	:SYSTEM_ID,
+	:USER_ID,
+	:COMMENTS,
+	:PASSFAIL,
+	:DIODO_1,
+	:DIODO_2
 )
