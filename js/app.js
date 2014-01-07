@@ -1,4 +1,4 @@
-var Query, Validator, Views, app;
+var Validator, ViewId, Views, app;
 
 app = app || {};
 
@@ -73,13 +73,20 @@ Validator = (function() {
 
 })();
 
-Query = (function() {
-  function Query() {
-    app.queryContent = new Views('#query-template', '#brdcmps');
-    app.queryContent.render(app.process);
+ViewId = (function() {
+  function ViewId(data) {
+    this.data = data;
   }
 
-  return Query;
+  ViewId.prototype.render = function() {
+    app.form.render(_.findWhere(app.process, {
+      name: app.requested.process
+    }));
+    $('#process-help').slideUp();
+    return $('#form').slideDown();
+  };
+
+  return ViewId;
 
 })();
 
@@ -93,7 +100,6 @@ app.validator = new Validator('formElement');
 
 app.sammy = Sammy('#brdcmps', function() {
   this.get('#/capture/:id', function() {
-    console.log(this.params.id);
     app.form.render(app.process[this.params.id]);
     $('#process-help').slideUp();
     return $('#form').slideDown();
@@ -111,19 +117,19 @@ app.sammy = Sammy('#brdcmps', function() {
   });
   this.get('#/success/:process/:id', function() {
     $.pnotify({
-      title: 'Proceso: ' + this.params['process'],
-      text: 'Se genero el id: ' + this.params['id'],
+      title: 'Proceso: ' + this.params.process,
+      text: 'Se genero el id: ' + this.params.id,
       type: 'success'
     });
     return this.redirect('#/view/' + this.params['process'] + '/' + this.params['id']);
   });
   this.get('#/view/:process/:id', function() {
     app.requested = {
-      id: this.params['id'],
-      process: this.params['process']
+      id: this.params.id,
+      process: this.params.process
     };
     return $.getJSON('getData.php', app.requested, function(data) {
-      return app.viewData = data;
+      return app.viewId = new ViewId(data);
     });
   });
   this.get('#/query', function() {
@@ -136,7 +142,7 @@ app.sammy = Sammy('#brdcmps', function() {
       process: this.params['process']
     };
     return $.getJSON('getData.php', app.requested, function(data) {
-      return app.viewData = data;
+      return app.viewId = new ViewId(data);
     });
   });
 });

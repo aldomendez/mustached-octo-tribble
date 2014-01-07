@@ -46,12 +46,14 @@ class Validator
 					}
 		return
 
-class Query
-	constructor: ->
-		app.queryContent = new Views('#query-template','#brdcmps')
-		app.queryContent.render app.process
-		
-	
+class ViewId
+	constructor:(data)->
+		@data = data
+
+	render:->
+		app.form.render  _.findWhere(app.process,{name:app.requested.process})
+		$('#process-help').slideUp()
+		$('#form').slideDown()
 
 
 app.brdcmps = new Views('#brdcmps-template','#brdcmps')
@@ -61,7 +63,7 @@ app.validator = new Validator('formElement')
 
 app.sammy = Sammy '#brdcmps',->
 	@get '#/capture/:id',()->
-		console.log @params.id
+		# console.log @params.id
 		app.form.render app.process[@params.id]
 		$('#process-help').slideUp()
 		$('#form').slideDown()
@@ -79,21 +81,19 @@ app.sammy = Sammy '#brdcmps',->
 
 	@get '#/success/:process/:id',->
 		$.pnotify {
-			title:'Proceso: ' + @params['process']
-			text: 'Se genero el id: ' + @params['id']
+			title:'Proceso: ' + @params.process
+			text: 'Se genero el id: ' + @params.id
 			type:'success'
 		}
 		@redirect '#/view/' + @params['process'] + '/' + @params['id']
 
 	@get '#/view/:process/:id',->
 		app.requested = {
-			id:@params['id']
-			process:@params['process']
+			id:@params.id
+			process:@params.process
 		}
 		$.getJSON 'getData.php', app.requested, (data)->
-			app.viewData = data
-			#console.log  _.find app.process, (num)->
-			#	num.name == app.requested.process
+			app.viewId = new ViewId(data)
 
 	@get '#/query', ->
 		app.que = new Query()
@@ -106,11 +106,7 @@ app.sammy = Sammy '#brdcmps',->
 			process:@params['process']
 		}
 		$.getJSON 'getData.php', app.requested, (data)->
-			app.viewData = data
-			#console.log  _.find app.process, (num)->
-			#	num.name == app.requested.process
-
-
+			app.viewId = new ViewId(data)
 
 	return
 

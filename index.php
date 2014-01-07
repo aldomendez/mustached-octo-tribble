@@ -21,9 +21,9 @@
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="header">
     <ul class="nav nav-pills pull-right">
-      <li class="active"><a href="#/query"></a></li>
-      <!-- <li><a href="#/celda">Resultados</a></li> -->
-      <!-- <li><a href="#/todas">Todas</a></li> -->
+      <li><a href="#/">Captura</a></li>
+      <li><a href="#/query/byId">Id</a></li>
+      <li><a href="#/query/bySerial">Serie</a></li>
       <!-- <li><a href="#/comentarios">Comentarios</a></li> -->
     </ul>
     <h3 class="text-muted">Control de Process Checks</h3>

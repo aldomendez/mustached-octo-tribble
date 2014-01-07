@@ -7,8 +7,8 @@ ini_set('display_errors', '1');
 error_reporting(E_ALL ^ E_NOTICE);
 
 $db = new MxApps();
-// echo "<pre>";
-// print_r($_SERVER);
+echo "<pre>";
+print_r($_POST);
 
 if (isset($_POST['PROCESS']) && $_POST['PROCESS'] !== ''){
 	if (function_exists($_POST['PROCESS'])) {
