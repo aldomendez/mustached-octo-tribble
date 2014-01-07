@@ -75,7 +75,9 @@ Validator = (function() {
 
 ViewId = (function() {
   function ViewId(data) {
-    this.data = data;
+    this.data = data[0];
+    this.render();
+    this.populate();
   }
 
   ViewId.prototype.render = function() {
@@ -84,6 +86,28 @@ ViewId = (function() {
     }));
     $('#process-help').slideUp();
     return $('#form').slideDown();
+  };
+
+  ViewId.prototype.populate = function() {
+    var k, v, _ref, _results;
+    _ref = this.data;
+    _results = [];
+    for (k in _ref) {
+      v = _ref[k];
+      if (k === 'SYSTEM_ID') {
+        $("[name=SYSTEM_ID][value=" + v + "]", '#form').attr('checked', 'checked');
+      }
+      if (k !== 'PASSFAIL') {
+        if ($("[name=" + k + "]", '#form') != null) {
+          _results.push($("[name=" + k + "]", '#form').val(v));
+        } else {
+          _results.push(void 0);
+        }
+      } else {
+        _results.push(void 0);
+      }
+    }
+    return _results;
   };
 
   return ViewId;

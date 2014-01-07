@@ -48,13 +48,21 @@ class Validator
 
 class ViewId
 	constructor:(data)->
-		@data = data
+		@data = data[0]
+		@render()
+		@populate()
 
 	render:->
 		app.form.render  _.findWhere(app.process,{name:app.requested.process})
 		$('#process-help').slideUp()
 		$('#form').slideDown()
-
+	populate:->
+		for k, v of @data
+			if k is 'SYSTEM_ID'
+				$("[name=SYSTEM_ID][value=#{v}]",'#form').attr('checked', 'checked')
+			if k isnt 'PASSFAIL'
+				if $("[name=#{k}]",'#form')? 
+					$("[name=#{k}]",'#form').val v
 
 app.brdcmps = new Views('#brdcmps-template','#brdcmps')
 app.form = new Views('#form-template','#form')
