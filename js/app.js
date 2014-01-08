@@ -136,7 +136,7 @@ app.sammy = Sammy('#brdcmps', function() {
   this.get('#/error/:message', function() {
     return $.pnotify({
       title: 'Error en el formulario',
-      text: this.params['message'],
+      text: this.params.message,
       type: 'info'
     });
   });
@@ -146,7 +146,7 @@ app.sammy = Sammy('#brdcmps', function() {
       text: 'Se genero el id: ' + this.params.id,
       type: 'success'
     });
-    return this.redirect('#/view/' + this.params['process'] + '/' + this.params['id']);
+    return this.redirect('#/view/' + this.params.process + '/' + this.params.id);
   });
   this.get('#/view/:process/:id', function() {
     app.requested = {

@@ -91,7 +91,7 @@ app.sammy = Sammy '#brdcmps',->
 	@get '#/error/:message',->
 		$.pnotify {
 			title:'Error en el formulario'
-			text: @params['message']
+			text: @params.message
 			type:'info'
 		}
 
@@ -101,7 +101,7 @@ app.sammy = Sammy '#brdcmps',->
 			text: 'Se genero el id: ' + @params.id
 			type:'success'
 		}
-		@redirect '#/view/' + @params['process'] + '/' + @params['id']
+		@redirect '#/view/' + @params.process + '/' + @params.id
 
 	@get '#/view/:process/:id',->
 		app.requested = {
