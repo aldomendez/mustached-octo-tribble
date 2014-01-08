@@ -46,6 +46,9 @@ class Validator
 					}
 		return
 
+# Se encarga de mostrar los datos del shear que se guardaron en la base de datos.
+# cuando el direccionador obtiene los datos de la base de datos, los datos que
+# recibe los pasa como parametro en la creacion de la funcion.
 class ViewId
 	constructor:(data)->
 		@data = data[0]
@@ -59,8 +62,12 @@ class ViewId
 	populate:->
 		for k, v of @data
 			if k is 'SYSTEM_ID'
+				# este campo es diferente en su forma de asignar valores
+				# por eso es que esta aparte
 				$("[name=SYSTEM_ID][value=#{v}]",'#form').attr('checked', 'checked')
 			if k isnt 'PASSFAIL'
+				# Este campo no tiene campo para asignar valores y no quiero
+				# advertencias en la aplicacion por que este 
 				if $("[name=#{k}]",'#form')? 
 					$("[name=#{k}]",'#form').val v
 

@@ -23,7 +23,7 @@ function redirect()
 
 	if ($db->state) {
 		$db->query('select max(id) id from ' . $tabla[$_POST['PROCESS']]);
-		$message = "success/" . $_POST['PROCESS'] . "/" . $db->results[0]['ID'];
+		$message = "success/" . $_POST['PROCESS'] . "/" . ($db->results[0]['ID'] + 2);
 	} else {
 		$message = "error/" . urlencode($db->oci_error_message['message']);
 	}
