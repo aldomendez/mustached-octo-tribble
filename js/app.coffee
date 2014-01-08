@@ -49,16 +49,17 @@ class Validator
 # Se encarga de mostrar los datos del shear que se guardaron en la base de datos.
 # cuando el direccionador obtiene los datos de la base de datos, los datos que
 # recibe los pasa como parametro en la creacion de la funcion.
-class ViewId
+class StoredData
 	constructor:(data)->
+		@view = new Views '#update-template','#form'
 		@data = data[0]
 		@render()
 		@populate()
-
 	render:->
-		app.form.render  _.findWhere(app.process,{name:app.requested.process})
+		@view.render  _.findWhere(app.process,{name:app.requested.process})
 		$('#process-help').slideUp()
 		$('#form').slideDown()
+
 	populate:->
 		for k, v of @data
 			if k is 'SYSTEM_ID'
@@ -108,20 +109,7 @@ app.sammy = Sammy '#brdcmps',->
 			process:@params.process
 		}
 		$.getJSON 'getData.php', app.requested, (data)->
-			app.viewId = new ViewId(data)
-
-	@get '#/query', ->
-		app.que = new Query()
-
-
-	@get '#/query/:process',->
-		app.que = new Query()
-		app.requested = {
-			id:@params['id']
-			process:@params['process']
-		}
-		$.getJSON 'getData.php', app.requested, (data)->
-			app.viewId = new ViewId(data)
+			app.viewId = new StoredData(data)
 
 	return
 

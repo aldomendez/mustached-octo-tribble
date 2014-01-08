@@ -1,4 +1,4 @@
-var Validator, ViewId, Views, app;
+var StoredData, Validator, Views, app;
 
 app = app || {};
 
@@ -73,22 +73,23 @@ Validator = (function() {
 
 })();
 
-ViewId = (function() {
-  function ViewId(data) {
+StoredData = (function() {
+  function StoredData(data) {
+    this.view = new Views('#update-template', '#form');
     this.data = data[0];
     this.render();
     this.populate();
   }
 
-  ViewId.prototype.render = function() {
-    app.form.render(_.findWhere(app.process, {
+  StoredData.prototype.render = function() {
+    this.view.render(_.findWhere(app.process, {
       name: app.requested.process
     }));
     $('#process-help').slideUp();
     return $('#form').slideDown();
   };
 
-  ViewId.prototype.populate = function() {
+  StoredData.prototype.populate = function() {
     var k, v, _ref, _results;
     _ref = this.data;
     _results = [];
@@ -110,7 +111,7 @@ ViewId = (function() {
     return _results;
   };
 
-  return ViewId;
+  return StoredData;
 
 })();
 
@@ -153,20 +154,7 @@ app.sammy = Sammy('#brdcmps', function() {
       process: this.params.process
     };
     return $.getJSON('getData.php', app.requested, function(data) {
-      return app.viewId = new ViewId(data);
-    });
-  });
-  this.get('#/query', function() {
-    return app.que = new Query();
-  });
-  this.get('#/query/:process', function() {
-    app.que = new Query();
-    app.requested = {
-      id: this.params['id'],
-      process: this.params['process']
-    };
-    return $.getJSON('getData.php', app.requested, function(data) {
-      return app.viewId = new ViewId(data);
+      return app.viewId = new StoredData(data);
     });
   });
 });
