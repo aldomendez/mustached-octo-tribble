@@ -85,8 +85,8 @@ StoredData = (function() {
   StoredData.prototype.hockHandlers = function() {
     var that;
     that = this;
-    return $('#cargar', '#form').on('click', that, function() {
-      return window.location.hash = "#/view/" + that.data.PROCESS + "/" + ($('[name=ID]').val());
+    return $('#loadById', '#form').on('click', function() {
+      return window.location.hash = "#/view/" + app.requested.process + "/" + ($('[name=ID]').val());
     });
   };
 
@@ -158,6 +158,7 @@ app.sammy = Sammy('#brdcmps', function() {
     return this.redirect('#/view/' + this.params.process + '/' + this.params.id);
   });
   this.get('#/view/:process/:id', function() {
+    app.brdcmps = new Views('#query-template', '#brdcmps');
     app.requested = {
       id: this.params.id,
       process: this.params.process

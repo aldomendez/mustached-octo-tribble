@@ -57,11 +57,10 @@ class StoredData
 		@populate()
 		@hockHandlers()
 	hockHandlers:->
+		# Esta parte es para poder enviar este valor
 		that = this
-		# $('#cargar','#form').on 'click', that, @requestData
-		$('#cargar','#form').on 'click', 
-			that,
-			->(window.location.hash = "#/view/#{that.data.PROCESS}/#{$('[name=ID]').val()}")
+		$('#loadById','#form').on 'click',
+			->(window.location.hash = "#/view/#{app.requested.process}/#{$('[name=ID]').val()}")
 	render:->
 		@view.render  _.findWhere(app.process,{name:app.requested.process})
 		$('#process-help').slideUp()
@@ -111,6 +110,7 @@ app.sammy = Sammy '#brdcmps',->
 		@redirect '#/view/' + @params.process + '/' + @params.id
 
 	@get '#/view/:process/:id',->
+		app.brdcmps = new Views('#query-template','#brdcmps')
 		app.requested = {
 			id:@params.id
 			process:@params.process

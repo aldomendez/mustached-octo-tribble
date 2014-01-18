@@ -22,8 +22,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <ul class="nav nav-pills pull-right">
     <li><a href="#/">Captura</a></li>
-    <li><a href="#/query/byId">Id</a></li>
-    <li><a href="#/query/bySerial">Serie</a></li>
+    <li><a href="#/view/PMQPSK/0">Id</a></li>
     <!-- <li><a href="#/comentarios">Comentarios</a></li> -->
   </ul>
   <h3 class="text-muted">Control de Process Checks</h3>
@@ -112,6 +111,7 @@
         <div class="input-group input-group-sm">
           <span class="input-group-addon">{{=value.name}}</span>
           <input type="text" class="form-control" name="{{=value.name.toUpperCase()}}" id="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
+            <span class="input-group-addon">gr</span>
         </div>
       </li>
       {{~}}
@@ -160,17 +160,18 @@
 
       <li class="list-group-item">
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <div class="input-group input-group-sm">
             <span class="input-group-addon">Id</span>
             <input type="text" class="form-control" name="ID" placeholder="Clave de rastreo">
-            <span class="input-group-btn"><button class="btn btn-default" type="button" id="cargar">Cargar</button></span>
+            <span class="input-group-btn"><button class="btn btn-default" type="button" id="loadById">Cargar</button></span>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
           <div class="input-group input-group-sm">
             <span class="input-group-addon">Numero de serie</span>
             <input type="text" class="form-control" name="SERIAL_NUM" placeholder="Numero de serie para rastreabilidad">
+            <span class="input-group-btn"><button class="btn btn-default" type="button" id="loadBySerial">Cargar</button></span>
           </div>
         </div>
         <div class="col-sm-3"> 
@@ -193,6 +194,7 @@
         <div class="input-group input-group-sm">
           <span class="input-group-addon">{{=value.name}}</span>
           <input type="text" class="form-control" name="{{=value.name.toUpperCase()}}" id="{{=value.name}}" placeholder="Valor minimo de control: {{=value.lcl}}">
+            <span class="input-group-addon">gr</span>
         </div>
       </li>
       {{~}}
