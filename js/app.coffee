@@ -2,12 +2,12 @@ app = app || {}
 
 class Views
 	constructor:(@templateSource,@target)->
-		@target = $ @target
-		@el = $ @templateSource 
-		@content = @el.html()
-		@compileTemplete()
+		@target = $ @target			# Objeto jQuery con la referencia a el punto de incercion
+		@el = $ @templateSource 	# Referencia a el elemento de la pagina donde esta el template
+		@content = @el.html()		# Contenido para ser convertido en template
+		@compileTemplete()			# Compila el template y lo deja listo para usar 
 	render:(data)->
-		@target.html(@template data);
+		@target.html @template data	# Aplica el template a los datos
 	compileTemplete:()->
 		@template = doT.template @content
 
@@ -55,6 +55,28 @@ class StoredData
 		@data = data[0]
 		@render()
 		@populate()
+		@hockHandlers()
+	hockHandlers:->
+		that = this
+		$('#cargar','#form').on 'click', that, @requestData
+		# $('#cargar','#form').on 'click', that, ->(window.location.hash = "#/view/#{that.data.PROCESS}/#{$('[name=ID]').val()}")
+	requestData:(event)->
+		# Prepara los datos que se enviaran
+		data =
+			id:$('[name=ID]').val()
+			# event.data me pasa los datos de la funcion que lo llamo (padre)
+			# data.PROCESS es el valor que me interesa
+			process:event.data.data.PROCESS
+		#obtiene la informacion de la base de datos
+		$.getJSON 'getData.php', data, (data)=>
+			console.log data
+			console.log event.data
+			event.data.data = data[0]
+			event.data.populate
+			if data.length > 1
+				console.log 'Que paso aqui, hay 2 valores?'
+			
+			#llama al proceso que despliega la informacion
 	render:->
 		@view.render  _.findWhere(app.process,{name:app.requested.process})
 		$('#process-help').slideUp()
@@ -110,6 +132,10 @@ app.sammy = Sammy '#brdcmps',->
 		}
 		$.getJSON 'getData.php', app.requested, (data)->
 			app.viewId = new StoredData(data)
+
+	@get '#/view',->
+		app.brdcmps = new Views('#brdcmps-template','#brdcmps')
+		app.form = new Views('#form-template','#form')
 
 	return
 

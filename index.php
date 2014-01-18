@@ -61,7 +61,7 @@
     <div class="panel-heading">
       <div class="btn-group btn-group-justified">
         {{~it:proceso:index}}
-        {{? proceso.componentes}}<a class="btn btn-default" href="#/query/{{=proceso.name}}" >{{=proceso.name}}</a>{{?}}
+        {{? proceso.componentes}}<a class="btn btn-default" href="#/view/{{=proceso.name}}" >{{=proceso.name}}</a>{{?}}
         {{~}}
       </div>
     </div>
@@ -160,19 +160,26 @@
 
       <li class="list-group-item">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon">Id</span>
+            <input type="text" class="form-control" name="ID" placeholder="Clave de rastreo">
+            <span class="input-group-btn"><button class="btn btn-default" type="button" id="cargar">Cargar</button></span>
+          </div>
+        </div>
+        <div class="col-sm-3">
           <div class="input-group input-group-sm">
             <span class="input-group-addon">Numero de serie</span>
             <input type="text" class="form-control" name="SERIAL_NUM" placeholder="Numero de serie para rastreabilidad">
           </div>
         </div>
-        <div class="col-sm-4"> 
+        <div class="col-sm-3"> 
           <div class="input-group input-group-sm">
             <span class="input-group-addon">Usuario</span>
             <input type="text" class="form-control" name="USER_ID" placeholder="Numero de Usuario">
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
           <div class="input-group input-group-sm">
             <span class="input-group-addon">Fecha</span>
             <input type="text" class="form-control" name="SHEAR_DATE" placeholder="Fecha de captura">

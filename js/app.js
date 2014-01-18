@@ -79,7 +79,34 @@ StoredData = (function() {
     this.data = data[0];
     this.render();
     this.populate();
+    this.hockHandlers();
   }
+
+  StoredData.prototype.hockHandlers = function() {
+    var that;
+    that = this;
+    return $('#cargar', '#form').on('click', that, function() {
+      return window.location.hash = "#/view/" + that.data.PROCESS + "/" + ($('[name=ID]').val());
+    });
+  };
+
+  StoredData.prototype.requestData = function(event) {
+    var data,
+      _this = this;
+    data = {
+      id: $('[name=ID]').val(),
+      process: event.data.data.PROCESS
+    };
+    return $.getJSON('getData.php', data, function(data) {
+      console.log(data);
+      console.log(event.data);
+      event.data.data = data[0];
+      event.data.populate;
+      if (data.length > 1) {
+        return console.log('Que paso aqui, hay 2 valores?');
+      }
+    });
+  };
 
   StoredData.prototype.render = function() {
     this.view.render(_.findWhere(app.process, {
@@ -156,6 +183,10 @@ app.sammy = Sammy('#brdcmps', function() {
     return $.getJSON('getData.php', app.requested, function(data) {
       return app.viewId = new StoredData(data);
     });
+  });
+  this.get('#/view', function() {
+    app.brdcmps = new Views('#brdcmps-template', '#brdcmps');
+    return app.form = new Views('#form-template', '#form');
   });
 });
 
