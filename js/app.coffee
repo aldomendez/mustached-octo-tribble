@@ -58,8 +58,8 @@ class StoredData
 		@hockHandlers()
 	hockHandlers:->
 		that = this
-		$('#cargar','#form').on 'click', that, @requestData
-		# $('#cargar','#form').on 'click', that, ->(window.location.hash = "#/view/#{that.data.PROCESS}/#{$('[name=ID]').val()}")
+		# $('#cargar','#form').on 'click', that, @requestData
+		$('#cargar','#form').on 'click', that, ->(window.location.hash = "#/view/#{that.data.PROCESS}/#{$('[name=ID]').val()}")
 	requestData:(event)->
 		# Prepara los datos que se enviaran
 		data =
