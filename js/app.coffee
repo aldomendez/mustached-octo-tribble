@@ -59,24 +59,9 @@ class StoredData
 	hockHandlers:->
 		that = this
 		# $('#cargar','#form').on 'click', that, @requestData
-		$('#cargar','#form').on 'click', that, ->(window.location.hash = "#/view/#{that.data.PROCESS}/#{$('[name=ID]').val()}")
-	requestData:(event)->
-		# Prepara los datos que se enviaran
-		data =
-			id:$('[name=ID]').val()
-			# event.data me pasa los datos de la funcion que lo llamo (padre)
-			# data.PROCESS es el valor que me interesa
-			process:event.data.data.PROCESS
-		#obtiene la informacion de la base de datos
-		$.getJSON 'getData.php', data, (data)=>
-			console.log data
-			console.log event.data
-			event.data.data = data[0]
-			event.data.populate
-			if data.length > 1
-				console.log 'Que paso aqui, hay 2 valores?'
-			
-			#llama al proceso que despliega la informacion
+		$('#cargar','#form').on 'click', 
+			that,
+			->(window.location.hash = "#/view/#{that.data.PROCESS}/#{$('[name=ID]').val()}")
 	render:->
 		@view.render  _.findWhere(app.process,{name:app.requested.process})
 		$('#process-help').slideUp()

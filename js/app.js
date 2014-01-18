@@ -90,24 +90,6 @@ StoredData = (function() {
     });
   };
 
-  StoredData.prototype.requestData = function(event) {
-    var data,
-      _this = this;
-    data = {
-      id: $('[name=ID]').val(),
-      process: event.data.data.PROCESS
-    };
-    return $.getJSON('getData.php', data, function(data) {
-      console.log(data);
-      console.log(event.data);
-      event.data.data = data[0];
-      event.data.populate;
-      if (data.length > 1) {
-        return console.log('Que paso aqui, hay 2 valores?');
-      }
-    });
-  };
-
   StoredData.prototype.render = function() {
     this.view.render(_.findWhere(app.process, {
       name: app.requested.process
