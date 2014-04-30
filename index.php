@@ -22,7 +22,7 @@
 ++++++++++++++++++++++++++++++++++++++++++++ -->
   <ul class="nav nav-pills pull-right">
     <li><a href="#/">Captura</a></li>
-    <li><a href="#/view/PMQPSK/0">Id</a></li>
+    <li><a href="#/view/PMQPSK/0">Revision</a></li>
     <!-- <li><a href="#/comentarios">Comentarios</a></li> -->
   </ul>
   <h3 class="text-muted">Control de Process Checks</h3>
