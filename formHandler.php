@@ -49,7 +49,8 @@ function bind_id($file)
 		'ICRX2' => 'shear_icrx2',
 		'SuperNovaROSA_HIC' => 'supernovarosa_hic',
 		'PMQPSK' => 'shear_pmkpsk',
-		'DiamondROSA_HIC' => 'DiamondROSA_HIC'
+		'DiamondROSA_HIC' => 'DiamondROSA_HIC',
+		'DiamondTOSA_HIC' => 'Shear_DiamondTOSA_HIC'
 	);
 	$db->query('select max(id) id from ' . $tabla[$_POST['PROCESS']]);
 	// $db->results[0]['ID']  << Este valor representa de la lista de valores que retorna el query
@@ -73,6 +74,33 @@ function ICRX2()
 	$file = bind($file, 'PASSFAIL');
 	$file = bind($file, 'DIODO_1');
 	$file = bind($file, 'DIODO_2');
+
+
+	// Despues de sustituir todas las variables,
+	// insertamos en la base de datos
+	$db->insert($file);
+	redirect();
+}
+
+function DiamondTOSA_HIC()
+{
+	// Hace visible el valor $db dentro de la funcion
+	global $db;
+	$file = file_get_contents('sql/insert_DiamondTOSA_HIC.sql');
+
+	// Sustituimos todas las variables
+	$file = bind_id($file);
+	$file = bind($file, 'PROCESS');
+	$file = bind($file, 'SERIAL_NUM');
+	$file = bind($file, 'SYSTEM_ID');
+	$file = bind($file, 'USER_ID');
+	$file = bind($file, 'COMMENTS');
+	$file = bind($file, 'PASSFAIL');
+	// $file = bind($file, 'GLASS_1');
+	$file = bind($file, 'BOBINA_1');
+	$file = bind($file, 'BOBINA_2');
+	$file = bind($file, 'BOBINA_3');
+	$file = bind($file, 'BOBINA_4');
 
 
 	// Despues de sustituir todas las variables,

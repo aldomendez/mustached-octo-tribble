@@ -9,6 +9,7 @@ Tablas en las que se almancenan los datos de process check:
 	supernovarosa_hic
 	shear_pmkpsk
 	diamondrosa_hic
+	shear_DiamondTOSA_HIC
 
 La aplicacion funciona a nivel basico hasta el momento, valida los campos basicos
 y es capas de ingresar datos en las 4 operaciones en las que tengo la informacion completa.

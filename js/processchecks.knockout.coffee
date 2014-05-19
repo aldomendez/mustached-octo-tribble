@@ -34,14 +34,27 @@ app.process=[{
 		lcl:'280'
 	}]
 },{
-	name:"DiamondTOSA-PKG"
+	name:"DiamondTOSA_PKG"
 	bonders:['CYBOND22']
 },{
-	name:"DiamondROSA-PKG"
+	name:"DiamondROSA_PKG"
 	bonders:['CYBOND22']
 },{
-	name:"DiamondTOSA-HIC"
+	name:"DiamondTOSA_HIC"
 	bonders:['CYBOT42']
+	componentes:[{
+		name:'Bobina_1'
+		lcl:'1240'
+	},{
+		name:'Bobina_2'
+		lcl:'1240'
+	},{
+		name:'Bobina_3'
+		lcl:'1240'
+	},{
+		name:'Bobina_4'
+		lcl:'1240'
+	}]
 },{
 	name:"DiamondROSA_HIC"
 	bonders:['CYBOND42']
